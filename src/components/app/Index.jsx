@@ -9,7 +9,10 @@ import { appReducer } from '../context/reducer';
 
 export const ShopManagementSystem = () => {
 
-    const [states, handleStates] = useReducer(appReducer, CustomerData);
+    const [states, handleStates] = useReducer(appReducer, {
+        customerData: CustomerData
+    });
+    
     return (
         <ShopManagementSystemContext.Provider value={{
             states, handleStates

@@ -1,6 +1,51 @@
+:root {
+    font-size: 16px;
+}
+
 .shopMS__container {
     width: 100%;
     min-width: 480px;
     margin: 0 auto;
     background-color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.appcustomerlist__container table,
+th,
+td {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.appdetails__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.appdetails__layout--inputElement {
+    display: flex;
+    justify-content: space-between !important;
+    gap: 1rem;
+}
+
+.appdetails__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.appdetails__container button {
+    all: unset;
+    border: 1px solid rgb(87, 87, 116);
+    padding: 0.5rem 1rem;
+    border-radius: 20%;
 }
