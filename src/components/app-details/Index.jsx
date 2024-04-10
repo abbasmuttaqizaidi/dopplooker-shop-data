@@ -10,7 +10,7 @@ export const AppDetails = () => {
         let originalIndex = states?.editing?.editedData?.index;
         let tempCustData = [...states?.customerData ?? []];
         if (tempCustData?.length > 0) {
-            tempCustData?.map((elem, index) => {
+            tempCustData?.forEach((elem, index) => {
                 if (originalIndex === index) {
                     tempCustData[index] = data;
                 }
@@ -25,23 +25,34 @@ export const AppDetails = () => {
         })
     }
 
+    const setDefaultValues = () => {
+        return {
+            firstName: states?.editing?.editedData?.data?.firstName ?? '',
+            lastName: states?.editing?.editedData?.data?.lastName ?? '',
+            numOfItemsPurchased: states?.editing?.editedData?.data?.numOfItemsPurchased ?? '',
+            amount: states?.editing?.editedData?.data?.amount ?? '',
+        }
+    }
+
     return <div className="appdetails__container">
         <h4>Edit Customer</h4>
-        <CustomDetailsForm buttonText="Update" onChange={(props) => {
-            updateUser(props)
-        }} />
+        <CustomDetailsForm
+            buttonText="Update"
+            onChange={(props) => {
+                updateUser(props)
+            }}
+            defaultValues={setDefaultValues()}
+        />
     </div>
 }
 
-export function CustomDetailsForm({ buttonText = 'Submit', onChange = () => { } }) {
-
-    const { states } = useContextLayer();
+export function CustomDetailsForm({ buttonText = 'Submit', onChange = () => { }, defaultValues = {} }) {
 
     const [formDetails, setFormDetails] = useState({
-        firstName: states?.editing?.editedData?.data?.firstName ?? '',
-        lastName: states?.editing?.editedData?.data?.lastName ?? '',
-        numOfItemsPurchased: states?.editing?.editedData?.data?.numOfItemsPurchased ?? '',
-        amount: states?.editing?.editedData?.data?.amount ?? '',
+        firstName: defaultValues?.firstName ?? '',
+        lastName: defaultValues?.lastName ?? '',
+        numOfItemsPurchased: defaultValues?.numOfItemsPurchased ?? '',
+        amount: defaultValues?.amount ?? '',
     })
 
     const handleFormInputs = (key, value) => {
