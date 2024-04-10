@@ -52,8 +52,6 @@ export function Action({ rowIndex, rowData }) {
     const { customerData } = states;
     const removeCustomer = () => {
         const newCustomers = customerData?.filter((elem, index) => index !== rowIndex);
-
-        console.log(newCustomers,'sfasafsaf');
         handleStates({
             type: _actions.customerData,
             subType: 'delete',
@@ -63,8 +61,27 @@ export function Action({ rowIndex, rowData }) {
         })
     }
 
+    const editUser = () => {
+        const editing = {
+            isEditing: !states?.editing?.isEditing,
+            editedData: {
+                data: rowData,
+                index: rowIndex
+            }
+        }
+        handleStates({
+            type: _actions.customerData,
+            subType: 'editData',
+            payload: {
+                [_actions.editing]: { ...editing }
+            }
+        })
+    }
+
     return <div className="table__action">
-        <button>Edit</button>
+        <button onClick={() => {
+            editUser()
+        }}>Edit</button>
         <button onClick={() => {
             removeCustomer(rowIndex)
         }}>Delete</button>

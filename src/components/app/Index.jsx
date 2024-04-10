@@ -13,7 +13,7 @@ export const ShopManagementSystem = () => {
     const [states, handleStates] = useReducer(appReducer, {
         customerData: CustomerData
     });
-
+ 
     return (
         <ShopManagementSystemContext.Provider value={{
             states, handleStates
@@ -24,7 +24,10 @@ export const ShopManagementSystem = () => {
                 </div>
                 <div className="shopMS__body">
                     <AppCustomerList />
-                    <AppDetails />
+                    {
+                        states?.editing?.isEditing &&
+                        <AppDetails />
+                    }
                 </div>
             </div>
         </ShopManagementSystemContext.Provider>
