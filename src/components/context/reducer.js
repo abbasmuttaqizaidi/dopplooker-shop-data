@@ -1,8 +1,13 @@
-export const appReducer = (state = {}, action) => {
-    switch (action.payload) {
-        case 'value':
+import { _actions } from "./actions";
 
-            break;
+export const appReducer = (state = {}, action) => {
+
+    switch (action.type) {
+        case _actions.customerData:
+            return {
+                ...state,
+                ...action.payload
+            }
 
         default:
             return { ...state };
