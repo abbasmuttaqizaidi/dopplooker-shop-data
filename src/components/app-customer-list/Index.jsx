@@ -4,7 +4,7 @@ import { prepareBodyData } from "../helper";
 import { _actions } from "../context/actions";
 
 export const AppCustomerList = () => {
-    const { states, handleStates } = useContextLayer();
+    const { states } = useContextLayer();
     const [bodyData, setBodyData] = useState([...states?.customerData]);
 
     useEffect(() => {

@@ -55,3 +55,11 @@ td {
     padding: 0.5rem 1rem;
     border-radius: 20%;
 }
+
+button {
+    border: none;
+    padding: 0.3rem 0.5rem;
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+}
