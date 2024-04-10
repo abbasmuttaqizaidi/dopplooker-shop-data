@@ -1,3 +1,3 @@
 export const _actions = {
-    customerData: 'customerdata'
+    customerData: 'customerData'
 }
