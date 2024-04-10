@@ -1,0 +1,1 @@
+# dopplooker-shop-data
