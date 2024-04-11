@@ -1,12 +1,11 @@
 :root {
     font-size: 16px;
-    --primary-background: #0F171A;
-    --grid-background: #fefcfd;
-    --secondary-background: #e4d7f4;
-    --text-color-high-attention: #00aadc;
+    --primary-background: #0F171A; 
+    --secondary-background: #e4d7f4; 
     --button-backgroung: #37db7d;
     --button-text: #f88f8c;
     --grid-cards: #283943;
+    --grid--background: #1A262d 
 }
 
 .shopMS__container {
@@ -15,9 +14,8 @@
     margin: 0 auto;
     background-color: var(--primary-background);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
     border: 1px solid black;
     gap: 1rem;
     padding: 2rem;

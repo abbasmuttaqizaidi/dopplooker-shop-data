@@ -1,44 +1,37 @@
-/* Styling for the header__todayspurchase section */
-
-
-.header__todayspurchase {
-    background-color: rgb(68, 66, 64);
-    height: 100px;
-    width: auto;
-    margin: 0;
-    box-sizing: border-box;
-    padding: 0px;
-    position: relative;
+.header__container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.header__todayspurchase--container {
-    margin: 0px;
-    display: flex;
-    flex-direction: row;
-    padding: 0rem 1rem;
+    flex-direction: column;
+    padding: 0.5rem;
+    background-color: var(--grid--background);
+    color: whitesmoke;
 }
 
 .purchase__info {
-    max-width: 200px;
-    text-align: center;
-    /* Center align the content */
-    color: white;
-    /* Set text color to white */
-}
-
-.purchase__info p {
-    font-weight: 100;
-    font-size: small;
+    line-height: 0px;
+    text-align: left;
     margin: 0;
-    /* Remove default margin */
+    background-color: var(--grid-cards);
+    padding: 1rem;
 }
 
-.purchase__info h2 {
+.purchase__info--heading {
+    font-size: 15px;
+    color: gray;
+}
+
+.purchase__info--value {
     font-size: 60px;
-    /* Decrease font size to fit within container */
+}
+
+.header__todayspurchase--container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
     margin: 0;
-    /* Remove default margin */
+}
+
+.header__todayspurchase--todayHeading{
+    font-size: 30px;
+    margin: 0px;
 }

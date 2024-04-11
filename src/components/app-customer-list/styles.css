@@ -7,7 +7,7 @@ td {
 }
 
 .appcustomerlist__container {
-    background-color: #1A262d;
+    background-color: var(--grid--background);
     border-radius: 1rem;
     padding: 1rem;
     display: flex;

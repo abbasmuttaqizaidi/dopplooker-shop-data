@@ -1,21 +1,21 @@
-import './styles.css'; 
+import './styles.css';
 export const Header = () => {
 
     return (
         <div className="header__container">
             <div className="header__todayspurchase">
                 <div className="header__todayspurchase--container">
+                    <p className='header__todayspurchase--todayHeading'>Today's Sales</p>
                     <div class="purchase__info">
-                        <p>Total Items Purchased</p>
-                        <h2>50</h2>
+                        <p className='purchase__info--heading'>Items Purchased</p>
+                        <p className='purchase__info--value'>50</p>
                     </div>
                     <div class="purchase__info">
-                        <p>Total Amount Received Today</p>
-                        <h2>$500</h2>
+                        <p className='purchase__info--heading'>Amount</p>
+                        <p className='purchase__info--value'>$500</p>
                     </div>
                 </div>
             </div>
-            
         </div>
     )
 }
