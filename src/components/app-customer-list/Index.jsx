@@ -2,33 +2,52 @@ import { useEffect, useState } from "react";
 import { useContextLayer } from "../context"
 import { prepareBodyData } from "../helper";
 import { _actions } from "../context/actions";
+import './styles.css';
+import { Modal } from "../../common/modal";
+import { CustomDetailsForm } from "../app-details/Index";
 
 export const AppCustomerList = () => {
-    const { states } = useContextLayer();
+    const { states, handleStates } = useContextLayer();
     const [bodyData, setBodyData] = useState([...states?.customerData]);
-
+    const [isOpen, setIsOpen] = useState(false);
     useEffect(() => {
         setBodyData(prepareBodyData(states?.customerData ?? []))
     }, [states?.customerData])
 
     return <div className="appcustomerlist__container">
+        <div className="appcustomerlist__table--title">
+            <p> Customers Details </p>
+            <button className="button__hollow button__medium" onClick={() => {
+                setIsOpen(!isOpen);
+            }}>Add Customer</button>
+        </div>
         <table>
             <thead>
-                <tr>
-                    <td colSpan={4}>Customers Details</td>
-                </tr>
-                <tr>
-
-                    <td>Name</td>
-                    <td># of Items</td>
-                    <td>Amount</td>
-                    <td>Action</td>
-                </tr>
             </thead>
             <tbody>
                 <TableBody tableBody={[...bodyData]} />
             </tbody>
         </table>
+
+        <Modal
+            isOpen={isOpen}
+            onClose={() => {
+                setIsOpen(!isOpen);
+            }}
+            title={"Add Customer"}
+        >
+            <CustomDetailsForm
+                buttonText='Add Customer'
+                onChange={(props) => {
+                    let tempSt = [props, ...states?.customerData ?? []];
+                    handleStates({
+                        type: _actions.customerData,
+                        payload: {
+                            customerData: prepareBodyData(tempSt)
+                        }
+                    })
+                }} />
+        </Modal>
     </div>
 }
 
@@ -36,11 +55,32 @@ export const TableBody = (props = {}) => {
     const { tableBody } = props;
 
     if (tableBody.length > 0) {
-        return tableBody?.map((tabRow, index) => <tr>
-            <td>{tabRow.name}</td>
-            <td>{tabRow.numOfItemsPurchased}</td>
-            <td>{tabRow.amount}</td>
-            <td><Action rowIndex={index} rowData={tabRow} /></td>
+        return tableBody?.map((tabRow, index) => <tr className="table__body--row">
+            <td>
+                <div className="table__body--recordContainer">
+                    <p className="table_body--recordNameheading">Name</p>
+                    <p className="table__body--recordValue">{tabRow.name}</p>
+                </div>
+            </td>
+            <td>
+                <div className="table__body--recordContainer">
+                    <p className="table_body--recordNameheading">Item Purchased</p>
+                    <p className="table__body--recordValue">{tabRow.numOfItemsPurchased}</p>
+                </div>
+            </td>
+            <td>
+                <div className="table__body--recordContainer">
+                    <p className="table_body--recordNameheading">Amount</p>
+                    <p className="table__body--recordValue">{tabRow.amount}</p>
+                </div>
+            </td>
+            <td className="table__body--actionsColumn">
+                <div className="table__body--recordContainer">
+                    <p className="table_body--recordNameheading">Actions</p>
+                    <div className="table__body--recordValue"><Action rowIndex={index} rowData={tabRow} /></div>
+                </div>
+
+            </td>
         </tr>
         )
     }
@@ -82,7 +122,7 @@ export function Action({ rowIndex, rowData }) {
         <button onClick={() => {
             editUser()
         }}>Edit</button>
-        <button onClick={() => {
+        <button className="button__small" onClick={() => {
             removeCustomer(rowIndex)
         }}>Delete</button>
     </div>

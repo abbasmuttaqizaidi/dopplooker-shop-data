@@ -1,12 +1,19 @@
 :root {
     font-size: 16px;
+    --primary-background: #0F171A;
+    --grid-background: #fefcfd;
+    --secondary-background: #e4d7f4;
+    --text-color-high-attention: #00aadc;
+    --button-backgroung: #37db7d;
+    --button-text: #f88f8c;
+    --grid-cards: #283943;
 }
 
 .shopMS__container {
     width: 100%;
     min-width: 480px;
     margin: 0 auto;
-    background-color: antiquewhite;
+    background-color: var(--primary-background);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,13 +27,6 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
-}
-
-.appcustomerlist__container table,
-th,
-td {
-    border-collapse: collapse;
-    border: 1px solid black;
 }
 
 .appdetails__layout {
@@ -56,10 +56,71 @@ td {
     justify-content: end;
 }
 
+
+/* CSS */
 button {
-    border: none;
-    padding: 0.3rem 0.5rem;
-    background-color: white;
-    border: 1px solid black;
+    align-items: center;
+    background-color: var(--button-backgroung);
+    border-radius: 5px;
+    border-style: none;
+    box-sizing: border-box;
     cursor: pointer;
+    display: inline-flex;
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    justify-content: center;
+    letter-spacing: .25px;
+    line-height: normal;
+    max-width: 100%;
+    overflow: visible;
+    padding: 5px 20px;
+    position: relative;
+    text-align: center;
+    user-select: none;
+    width: auto;
+    z-index: 0;
+}
+
+.button__hollow {
+    border: 1px solid grey;
+    color: white;
+    background-color: transparent;
+}
+
+.button__medium {
+    height: 40px !important;
+    font-size: 20px;
+}
+
+.button__small {
+    height: 35px;
+
+}
+
+button:hover {
+    box-shadow: 0 0px 5px #37db7d !important;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+button:focus {
+    outline: 0;
+}
+
+button:not(:disabled) {
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+button:not(:disabled):hover {
+    box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+button:not(:disabled):focus {
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+button:not(:disabled):active {
+    box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+
+button:disabled {
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }

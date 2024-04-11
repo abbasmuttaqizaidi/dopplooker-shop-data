@@ -1,0 +1,44 @@
+/* Styling for the header__todayspurchase section */
+
+
+.header__todayspurchase {
+    background-color: rgb(68, 66, 64);
+    height: 100px;
+    width: auto;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__todayspurchase--container {
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    padding: 0rem 1rem;
+}
+
+.purchase__info {
+    max-width: 200px;
+    text-align: center;
+    /* Center align the content */
+    color: white;
+    /* Set text color to white */
+}
+
+.purchase__info p {
+    font-weight: 100;
+    font-size: small;
+    margin: 0;
+    /* Remove default margin */
+}
+
+.purchase__info h2 {
+    font-size: 60px;
+    /* Decrease font size to fit within container */
+    margin: 0;
+    /* Remove default margin */
+}

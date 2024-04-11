@@ -12,7 +12,6 @@ export const AppDetails = () => {
         if (tempCustData?.length > 0) {
             tempCustData?.forEach((elem, index) => {
                 if (originalIndex === index) {
-                    console.log('sfsafsdafsaff', originalIndex === index, originalIndex, index);
                     tempCustData[index] = data;
                 }
             })
