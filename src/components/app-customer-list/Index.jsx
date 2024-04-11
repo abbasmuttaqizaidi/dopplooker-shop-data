@@ -63,7 +63,7 @@ export function Action({ rowIndex, rowData }) {
 
     const editUser = () => {
         const editing = {
-            isEditing: !states?.editing?.isEditing,
+            isEditing: true,
             editedData: {
                 data: rowData,
                 index: rowIndex

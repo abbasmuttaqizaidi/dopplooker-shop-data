@@ -1,17 +1,18 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useContextLayer } from "../context"
 import { _actions } from "../context/actions";
 
 export const AppDetails = () => {
     const { states, handleStates } = useContextLayer();
 
-
     const updateUser = (data = []) => {
         let originalIndex = states?.editing?.editedData?.index;
         let tempCustData = [...states?.customerData ?? []];
+
         if (tempCustData?.length > 0) {
             tempCustData?.forEach((elem, index) => {
                 if (originalIndex === index) {
+                    console.log('sfsafsdafsaff', originalIndex === index, originalIndex, index);
                     tempCustData[index] = data;
                 }
             })
@@ -42,18 +43,29 @@ export const AppDetails = () => {
                 updateUser(props)
             }}
             defaultValues={setDefaultValues()}
+            allowOnClose={true}
         />
     </div>
 }
 
-export function CustomDetailsForm({ buttonText = 'Submit', onChange = () => { }, defaultValues = {} }) {
-
+export function CustomDetailsForm({ buttonText = 'Submit', onChange = () => { }, defaultValues = {}, allowOnClose }) {
+    const { states, handleStates } = useContextLayer();
     const [formDetails, setFormDetails] = useState({
-        firstName: defaultValues?.firstName ?? '',
-        lastName: defaultValues?.lastName ?? '',
-        numOfItemsPurchased: defaultValues?.numOfItemsPurchased ?? '',
-        amount: defaultValues?.amount ?? '',
+        firstName: '',
+        lastName: '',
+        numOfItemsPurchased: '',
+        amount: '',
     })
+
+    useEffect(() => {
+        Object.keys(defaultValues ?? {})?.length > 0 &&
+            setFormDetails({
+                firstName: defaultValues?.firstName ?? '',
+                lastName: defaultValues?.lastName ?? '',
+                numOfItemsPurchased: defaultValues?.numOfItemsPurchased ?? '',
+                amount: defaultValues?.amount ?? '',
+            })
+    }, [defaultValues])
 
     const handleFormInputs = (key, value) => {
         let tempFormDetails = { ...formDetails };
@@ -91,7 +103,22 @@ export function CustomDetailsForm({ buttonText = 'Submit', onChange = () => { },
                     handleFormInputs('amount', event.target.value);
                 }} />
             </div>
-            <button onClick={() => { onDetailsSubmit() }}>{buttonText}</button>
+            <div className="appdetails__layout--footer">
+                {allowOnClose && <button onClick={() => {
+                    const editing = {
+                        isEditing: false,
+                        editedData: { ...states?.editing?.editedData }
+                    }
+                    handleStates({
+                        type: _actions.customerData,
+                        subType: 'editData',
+                        payload: {
+                            [_actions.editing]: { ...editing }
+                        }
+                    })
+                }}>Close</button>}
+                <button onClick={() => { onDetailsSubmit() }}>{buttonText}</button>
+            </div>
         </div>
     )
 }

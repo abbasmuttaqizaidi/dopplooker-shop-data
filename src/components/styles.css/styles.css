@@ -49,11 +49,11 @@ td {
     gap: 1rem;
 }
 
-.appdetails__container button {
-    all: unset;
-    border: 1px solid rgb(87, 87, 116);
-    padding: 0.5rem 1rem;
-    border-radius: 20%;
+.appdetails__layout--footer {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: end;
 }
 
 button {
