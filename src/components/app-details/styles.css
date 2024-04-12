@@ -19,6 +19,7 @@
     padding: 1rem;
     color: white;
     gap: 1rem;
+    border-radius: 4% 4% 0 0;
 }
 
 .appdetails__container--heading {
@@ -33,9 +34,8 @@
     justify-content: end;
 }
 
-.appdetails__container--body{
+.appdetails__container--body {
     background-color: var(--grid-cards);
     padding: 0.5rem;
     font-size: 20px;
 }
- 

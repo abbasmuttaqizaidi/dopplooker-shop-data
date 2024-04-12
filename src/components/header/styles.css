@@ -1,9 +1,11 @@
 .header__container {
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
+    padding: 1rem;
     background-color: var(--grid--background);
     color: whitesmoke;
+    min-width: 260px;
+    border-radius: 4% 4% 0 0;
 }
 
 .purchase__info {
@@ -33,8 +35,8 @@
 }
 
 .header__todayspurchase--todayHeading {
-    font-size: 30px;
-    margin: 0px;
-
-    line-height: 2rem;
+    font-size: 30px; 
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
 }

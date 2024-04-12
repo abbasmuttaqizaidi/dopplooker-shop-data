@@ -3,7 +3,7 @@ th,
 td {
     padding: 0.2rem 1.4rem;
     color: #FFFF !important;
-    border-collapse: collapse;
+    border-collapse: collapse; 
 }
 
 .appcustomerlist__container {
