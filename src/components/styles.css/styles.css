@@ -176,3 +176,37 @@ input:hover {
 }
 
 /* HEADER END */
+
+/* Small devices (phones, 320px and up) */
+@media screen and (max-width: 768px) {
+
+    /* CSS rules */
+    .shopMS__container {
+        flex-direction: column;
+    }
+
+    .shopMS__body {
+        flex-direction: column;
+        max-width: 480px;
+    }
+
+    .shopMS__header{
+        max-width: 480px;
+        font-size: 20px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+    /* CSS rules */
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media screen and (min-width: 1024px) {
+    /* CSS rules */
+}
+
+/* Extra large devices (large desktops, 1440px and up) */
+@media screen and (min-width: 1440px) {
+    /* CSS rules */
+}
