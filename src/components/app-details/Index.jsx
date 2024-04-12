@@ -118,7 +118,7 @@ export function CustomDetailsForm({ buttonText = 'Submit', onChange = () => { },
                 }} />
             </div>
             <div className="appdetails__layout--footer">
-                {allowOnClose && <button onClick={() => {
+                {allowOnClose && <button className="button__small" onClick={() => {
                     const editing = {
                         isEditing: false,
                         editedData: { ...states?.editing?.editedData }

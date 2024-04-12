@@ -143,6 +143,7 @@ input:hover {
     background-color: var(--grid-cards);
     padding: 1rem;
     max-height: 110px;
+    border-radius: 5% 0;
 }
 
 .purchase__info--heading {

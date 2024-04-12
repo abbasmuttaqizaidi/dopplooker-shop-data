@@ -35,6 +35,7 @@
 
 .appdetails__container--body {
     background-color: var(--grid-cards);
-    padding: 0.5rem;
+    padding: 1rem;
     font-size: 20px;
+    border-radius: 5% 0; 
 }
