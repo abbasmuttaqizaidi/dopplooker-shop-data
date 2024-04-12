@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useContextLayer } from "../context"
 import { _actions } from "../context/actions";
 import './styles.css';
+import editcustomer from '../../assets/icons/edit.svg';
 
 export const AppDetails = () => {
     const { states, handleStates } = useContextLayer();
@@ -35,19 +36,30 @@ export const AppDetails = () => {
         }
     }
 
-    return <div className="appdetails__container">
-        <p className="appdetails__container--heading">Edit Customer</p>
-        <div className="appdetails__container--body">
-            <CustomDetailsForm
-                buttonText="Update"
-                onChange={(props) => {
-                    updateUser(props)
-                }}
-                defaultValues={setDefaultValues()}
-                allowOnClose={true}
-            />
+    return (
+        <div className="header__container">
+            <div className="header__todayspurchase">
+                <div className="header__todayspurchase--container">
+                    <p className='header__todayspurchase--todayHeading'>
+                        <span>Edit Customer</span>
+                        <img src={editcustomer} className='img__small' alt='sales' />
+                    </p>
+                    <div className="appdetails__container">
+                        <div className="appdetails__container--body">
+                            <CustomDetailsForm
+                                buttonText="Update"
+                                onChange={(props) => {
+                                    updateUser(props)
+                                }}
+                                defaultValues={setDefaultValues()}
+                                allowOnClose={true}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    )
 }
 
 export function CustomDetailsForm({ buttonText = 'Submit', onChange = () => { }, defaultValues = {}, allowOnClose }) {

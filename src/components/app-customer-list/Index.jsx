@@ -5,6 +5,7 @@ import { _actions } from "../context/actions";
 import './styles.css';
 import { Modal } from "../../common/modal";
 import { CustomDetailsForm } from "../app-details/Index";
+import customerDetails from '../../assets/icons/details.svg'
 
 export const AppCustomerList = () => {
     const { states, handleStates } = useContextLayer();
@@ -16,7 +17,15 @@ export const AppCustomerList = () => {
 
     return <div className="appcustomerlist__container">
         <div className="appcustomerlist__table--title">
-            <p> Customers Details </p>
+            <div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: 'center',
+                gap: '1rem'
+            }}>
+                <p> Customers Details </p>
+                <img src={customerDetails} className="img__small" />
+            </div>
             <button className="button__hollow button__medium" onClick={() => {
                 setIsOpen(!isOpen);
             }}>Add Customer</button>

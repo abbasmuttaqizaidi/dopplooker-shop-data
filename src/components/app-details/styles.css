@@ -16,7 +16,6 @@
     justify-content: center;
     flex-direction: column;
     background-color: var(--grid--background);
-    padding: 1rem;
     color: white;
     gap: 1rem;
     border-radius: 4% 4% 0 0;

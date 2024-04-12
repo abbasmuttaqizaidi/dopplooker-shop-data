@@ -121,3 +121,53 @@ input:hover {
     height: 30px;
     color: white;
 }
+
+
+/* img end */
+
+/* Header START */
+
+.header__container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--grid--background);
+    color: whitesmoke;
+    min-width: 260px;
+    border-radius: 4% 4% 0 0;
+}
+
+.purchase__info {
+    line-height: 0px;
+    text-align: left;
+    margin: 0;
+    background-color: var(--grid-cards);
+    padding: 1rem;
+    max-height: 110px;
+}
+
+.purchase__info--heading {
+    font-size: 15px;
+    color: gray;
+}
+
+.purchase__info--value {
+    font-size: 60px;
+}
+
+.header__todayspurchase--container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+    margin: 0;
+}
+
+.header__todayspurchase--todayHeading {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* HEADER END */
