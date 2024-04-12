@@ -5,15 +5,18 @@ export function prepareBodyData(data = []) {
             modifiedRow.push({
                 ...record,
                 name: record?.firstName + ' ' + record?.lastName,
-                ...(record?.date ? record.Date : createDateKey(record))
+                ...createDateKey(record)
             })
         })
     }
+    console.log(modifiedRow,'dsafafsafd');
     return modifiedRow;
 }
 
 export const createDateKey = (record) => {
-    return { date: extractCurrentDate() }
+    console.log(record,'sdafsdafsaf');
+    if (+record?.numOfItemsPurchased > 0 && !record?.date )
+        return { date: extractCurrentDate() }
 }
 
 export function extractCurrentDate() {

@@ -68,19 +68,19 @@ export const TableBody = (props = {}) => {
             <td>
                 <div className="table__body--recordContainer">
                     <p className="table_body--recordNameheading">Name</p>
-                    <p className="table__body--recordValue">{tabRow.name}</p>
+                    <p className="table__body--recordValue">{tabRow.name || 'N/A'}</p>
                 </div>
             </td>
             <td>
                 <div className="table__body--recordContainer">
                     <p className="table_body--recordNameheading">Item Purchased</p>
-                    <p className="table__body--recordValue">{tabRow.numOfItemsPurchased}</p>
+                    <p className="table__body--recordValue">{tabRow.numOfItemsPurchased || 'N/A'}</p>
                 </div>
             </td>
             <td>
                 <div className="table__body--recordContainer">
                     <p className="table_body--recordNameheading">Amount</p>
-                    <p className="table__body--recordValue">{tabRow.amount}</p>
+                    <p className="table__body--recordValue">{tabRow.amount || 'N/A'}</p>
                 </div>
             </td>
             <td className="table__body--actionsColumn">

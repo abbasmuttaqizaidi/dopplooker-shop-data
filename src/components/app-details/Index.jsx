@@ -12,10 +12,16 @@ export const AppDetails = () => {
         let originalIndex = states?.editing?.editedData?.index;
         let tempCustData = [...states?.customerData ?? []];
 
+        let originalArray = tempCustData.filter(elem => elem?.firstName === data?.firstName || elem?.lastName === data?.lastName)?.[0];
+
+        let newArray = { ...originalArray, ...data };
+        if (!originalArray?.date)
+            newArray = { ...originalArray, ...newArray, ...createDateKey(originalArray) };
+
         if (tempCustData?.length > 0) {
             tempCustData?.forEach((elem, index) => {
                 if (originalIndex === index) {
-                    tempCustData[index] = { ...data, ...createDateKey(data) };
+                    tempCustData[index] = newArray ?? [];
                 }
             })
         }
@@ -23,7 +29,8 @@ export const AppDetails = () => {
             type: _actions.updateRecord,
             subType: 'update',
             payload: {
-                [_actions.customerData]: tempCustData
+                [_actions.customerData]: tempCustData,
+                [_actions.editing]: { ...states?.editing, isEditing: false }
             }
         })
     }
