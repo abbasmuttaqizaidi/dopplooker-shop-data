@@ -1,4 +1,7 @@
 .modal__container {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +12,11 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 10;
-    /* Ensure modal is on top of other elements */
+}
+
+.modal__container.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 .modal__title b{
@@ -20,7 +27,15 @@
     background-color: white;
     padding: 1rem;
     border-radius: 5px;
-    min-width: 400px
+    min-width: 400px;
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.modal__container.show .modal__body {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .modal__header {
