@@ -3,6 +3,7 @@ import { useContextLayer } from "../context"
 import { _actions } from "../context/actions";
 import './styles.css';
 import editcustomer from '../../assets/icons/edit.svg';
+import { createDateKey } from "../helper";
 
 export const AppDetails = () => {
     const { states, handleStates } = useContextLayer();
@@ -14,7 +15,7 @@ export const AppDetails = () => {
         if (tempCustData?.length > 0) {
             tempCustData?.forEach((elem, index) => {
                 if (originalIndex === index) {
-                    tempCustData[index] = data;
+                    tempCustData[index] = { ...data, ...createDateKey(data) };
                 }
             })
         }
