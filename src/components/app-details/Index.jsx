@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useContextLayer } from "../context"
 import { _actions } from "../context/actions";
+import './styles.css';
 
 export const AppDetails = () => {
     const { states, handleStates } = useContextLayer();
@@ -35,15 +36,17 @@ export const AppDetails = () => {
     }
 
     return <div className="appdetails__container">
-        <h4>Edit Customer</h4>
-        <CustomDetailsForm
-            buttonText="Update"
-            onChange={(props) => {
-                updateUser(props)
-            }}
-            defaultValues={setDefaultValues()}
-            allowOnClose={true}
-        />
+        <p className="appdetails__container--heading">Edit Customer</p>
+        <div className="appdetails__container--body">
+            <CustomDetailsForm
+                buttonText="Update"
+                onChange={(props) => {
+                    updateUser(props)
+                }}
+                defaultValues={setDefaultValues()}
+                allowOnClose={true}
+            />
+        </div>
     </div>
 }
 

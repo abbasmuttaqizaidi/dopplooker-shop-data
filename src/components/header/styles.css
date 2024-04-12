@@ -12,6 +12,7 @@
     margin: 0;
     background-color: var(--grid-cards);
     padding: 1rem;
+    max-height: 110px;
 }
 
 .purchase__info--heading {
@@ -31,7 +32,9 @@
     margin: 0;
 }
 
-.header__todayspurchase--todayHeading{
+.header__todayspurchase--todayHeading {
     font-size: 30px;
     margin: 0px;
+
+    line-height: 2rem;
 }
