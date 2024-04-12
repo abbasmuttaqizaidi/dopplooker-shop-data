@@ -9,22 +9,23 @@ export const AppDetails = () => {
     const { states, handleStates } = useContextLayer();
 
     const updateUser = (data = []) => {
-        let originalIndex = states?.editing?.editedData?.index;
-        let tempCustData = [...states?.customerData ?? []];
+        const originalIndex = states?.editing?.editedData?.index;
+        const tempCustData = [...(states?.customerData ?? [])];
 
-        let originalArray = tempCustData.filter(elem => elem?.firstName === data?.firstName || elem?.lastName === data?.lastName)?.[0];
+        const originalArray = tempCustData.find(elem => elem?.firstName === data?.firstName || elem?.lastName === data?.lastName);
 
         let newArray = { ...originalArray, ...data };
         if (!originalArray?.date)
             newArray = { ...originalArray, ...newArray, ...createDateKey(originalArray) };
 
-        if (tempCustData?.length > 0) {
-            tempCustData?.forEach((elem, index) => {
+        if (tempCustData.length > 0) {
+            tempCustData.forEach((elem, index) => {
                 if (originalIndex === index) {
                     tempCustData[index] = newArray ?? [];
                 }
-            })
+            });
         }
+
         handleStates({
             type: _actions.updateRecord,
             subType: 'update',
@@ -32,8 +33,9 @@ export const AppDetails = () => {
                 [_actions.customerData]: tempCustData,
                 [_actions.editing]: { ...states?.editing, isEditing: false }
             }
-        })
-    }
+        });
+    };
+
 
     const setDefaultValues = () => {
         return {

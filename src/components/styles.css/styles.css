@@ -53,6 +53,11 @@ button {
     transition: box-shadow 0.3s ease-in-out;
 }
 
+.button__destructive {
+    background-color: red;
+    color: white;
+}
+
 .button__hollow {
     border: 1px solid grey;
     color: white;
@@ -66,7 +71,6 @@ button {
 
 .button__small {
     height: 35px;
-
 }
 
 button:hover {

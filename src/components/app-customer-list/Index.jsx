@@ -10,10 +10,25 @@ import customerDetails from '../../assets/icons/details.svg'
 export const AppCustomerList = () => {
     const { states, handleStates } = useContextLayer();
     const [bodyData, setBodyData] = useState([...states?.customerData]);
-    const [isOpen, setIsOpen] = useState(false);
     useEffect(() => {
         setBodyData(prepareBodyData(states?.customerData ?? []))
     }, [states?.customerData])
+
+    const [modal, handleModal] = useState({
+        title: '',
+        isOpen: false,
+        structure: [],
+        onPrimaryButtonClicked: () => { }
+    })
+
+    const modalHandler = (isOpen = false, title = '', structure = [], onPrimaryButtonClicked = () => { }) => {
+        let tempModal = { ...modal };
+        tempModal['title'] = title ?? '';
+        tempModal['isOpen'] = isOpen ?? false;
+        tempModal['structure'] = structure;
+        tempModal['onPrimaryButtonClicked'] = onPrimaryButtonClicked;
+        handleModal(tempModal);
+    }
 
     return <div className="appcustomerlist__container">
         <div className="appcustomerlist__table--title">
@@ -27,41 +42,53 @@ export const AppCustomerList = () => {
                 <img src={customerDetails} className="img__small" alt="customer's details" />
             </div>
             <button className="button__hollow button__medium" onClick={() => {
-                setIsOpen(!isOpen);
+                let tempStructure = [];
+                tempStructure.push(
+                    <CustomDetailsForm
+                        buttonText='Add Customer'
+                        onChange={(props) => {
+                            let tempSt = [props, ...states?.customerData ?? []];
+                            handleStates({
+                                type: _actions.customerData,
+                                payload: {
+                                    customerData: prepareBodyData(tempSt)
+                                }
+                            })
+                        }} />
+                )
+                modalHandler(!modal.isOpen, "Add Customer", tempStructure);
             }}>Add Customer</button>
         </div>
         <table>
             <thead>
             </thead>
             <tbody>
-                <TableBody tableBody={[...bodyData]} />
+                <TableBody tableBody={[...bodyData]} modal={{ modalHandler }} />
             </tbody>
         </table>
 
         <Modal
-            isOpen={isOpen}
+            isOpen={modal.isOpen}
             onClose={() => {
-                setIsOpen(!isOpen);
+                modalHandler(!modal.isOpen)
             }}
             title={"Add Customer"}
+            primaryButton={{
+                enable: modal?.title === 'Delete User',
+                onPrimaryButtonClicked: () => {
+                    modal.onPrimaryButtonClicked();
+                }
+            }}
         >
-            <CustomDetailsForm
-                buttonText='Add Customer'
-                onChange={(props) => {
-                    let tempSt = [props, ...states?.customerData ?? []];
-                    handleStates({
-                        type: _actions.customerData,
-                        payload: {
-                            customerData: prepareBodyData(tempSt)
-                        }
-                    })
-                }} />
+            {modal.structure}
         </Modal>
     </div>
 }
 
 export const TableBody = (props = {}) => {
-    const { tableBody } = props;
+    const { tableBody, modal } = props;
+
+
 
     if (tableBody.length > 0) {
         return tableBody?.map((tabRow, index) => <tr className="table__body--row">
@@ -86,7 +113,7 @@ export const TableBody = (props = {}) => {
             <td className="table__body--actionsColumn">
                 <div className="table__body--recordContainer">
                     <p className="table_body--recordNameheading">Actions</p>
-                    <div className="table__body--recordValue"><Action rowIndex={index} rowData={tabRow} /></div>
+                    <div className="table__body--recordValue"><Action rowIndex={index} rowData={tabRow} modal={modal} /></div>
                 </div>
 
             </td>
@@ -96,10 +123,12 @@ export const TableBody = (props = {}) => {
     return <></>
 }
 
-export function Action({ rowIndex, rowData }) {
+export function Action({ rowIndex, rowData, modal }) {
     const { states, handleStates } = useContextLayer();
+    const { modalHandler } = modal;
     const { customerData } = states;
-    const removeCustomer = () => {
+
+    const onDelete = () => {
         const newCustomers = customerData?.filter((elem, index) => index !== rowIndex);
         handleStates({
             type: _actions.customerData,
@@ -107,7 +136,16 @@ export function Action({ rowIndex, rowData }) {
             payload: {
                 [_actions.customerData]: newCustomers
             }
-        })
+        });
+        modalHandler(false);
+    }
+
+    const removeCustomer = () => {
+        let tempStructure = [];
+        tempStructure.push(
+            <p>Confirm Delete entry ?</p>
+        )
+        modalHandler(true, 'Delete User', tempStructure, onDelete);
     }
 
     const editUser = () => {
