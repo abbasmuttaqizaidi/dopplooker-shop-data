@@ -1,0 +1,13 @@
+.header__footer {
+    display: flex;
+    justify-content: end;
+    margin-top: 0.8rem;
+    color: gray;
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+.header__footer div:hover {
+    cursor: pointer;
+    text-shadow: 0 0 0.5px bisque;
+    transition: text-shadow 0.3s ease-in-out;
+}

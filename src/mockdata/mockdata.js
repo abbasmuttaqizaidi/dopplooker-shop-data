@@ -9,6 +9,6 @@ export const CustomerData = [
     { firstName: 'Olivia', lastName: 'Miller', numOfItemsPurchased: 9, amount: 180, date: '2024-04-08' },
     { firstName: 'Daniel', lastName: 'Wilson', numOfItemsPurchased: 3, amount: 75, date: '2024-04-09' },
     { firstName: 'Ava', lastName: 'Moore', numOfItemsPurchased: 5, amount: 100, date: '2024-04-10' },
-    { firstName: 'James', lastName: 'Taylor', numOfItemsPurchased: 4, amount: 90, date: '2024-04-11' },
+    { firstName: 'James', lastName: 'Taylor', numOfItemsPurchased: 4, amount: 90, date: '2024-04-12' },
     { firstName: 'Emma', lastName: 'Anderson', numOfItemsPurchased: 6, amount: 120, date: '2024-04-12' },
 ];

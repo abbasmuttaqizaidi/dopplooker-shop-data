@@ -1,5 +1,6 @@
 export const _actions = {
     customerData: 'customerData',
     editing: 'editing',
-    updateRecord: 'updateRecord'
+    updateRecord: 'updateRecord',
+    todaysReport: 'todaysReport'
 }

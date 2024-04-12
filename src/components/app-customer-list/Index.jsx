@@ -24,7 +24,7 @@ export const AppCustomerList = () => {
                 gap: '1rem'
             }}>
                 <p> Customers Details </p>
-                <img src={customerDetails} className="img__small" />
+                <img src={customerDetails} className="img__small" alt="customer's details" />
             </div>
             <button className="button__hollow button__medium" onClick={() => {
                 setIsOpen(!isOpen);

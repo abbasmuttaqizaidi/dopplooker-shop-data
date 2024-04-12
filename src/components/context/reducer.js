@@ -6,6 +6,7 @@ export const appReducer = (state = {}, action) => {
         case _actions.editing:
         case _actions.updateRecord:
         case _actions.customerData:
+        case _actions.todaysReport:
             return {
                 ...state,
                 ...action.payload
