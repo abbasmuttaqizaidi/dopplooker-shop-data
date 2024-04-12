@@ -8,6 +8,7 @@
     display: flex;
     justify-content: space-between !important;
     gap: 1rem;
+    font-size: 1.2rem;
 }
 
 .appdetails__container {

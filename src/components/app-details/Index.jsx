@@ -95,25 +95,25 @@ export function CustomDetailsForm({ buttonText = 'Submit', onChange = () => { },
         <div className="appdetails__layout">
             <div className="appdetails__layout--inputElement">
                 <label>First Name: </label>
-                <input value={formDetails.firstName} onChange={(event) => {
+                <input type="text" value={formDetails.firstName} onChange={(event) => {
                     handleFormInputs('firstName', event.target.value);
                 }} />
             </div>
             <div className="appdetails__layout--inputElement">
                 <label>Last Name: </label>
-                <input value={formDetails.lastName} onChange={(event) => {
+                <input type="text" value={formDetails.lastName} onChange={(event) => {
                     handleFormInputs('lastName', event.target.value);
                 }} />
             </div>
             <div className="appdetails__layout--inputElement">
                 <label>Item Purchased: </label>
-                <input value={formDetails.numOfItemsPurchased} onChange={(event) => {
+                <input type="number" value={formDetails.numOfItemsPurchased} onChange={(event) => {
                     handleFormInputs('numOfItemsPurchased', event.target.value);
                 }} />
             </div>
             <div className="appdetails__layout--inputElement">
                 <label>Amount: </label>
-                <input value={formDetails.amount} onChange={(event) => {
+                <input type="number" value={formDetails.amount} onChange={(event) => {
                     handleFormInputs('amount', event.target.value);
                 }} />
             </div>
@@ -131,7 +131,7 @@ export function CustomDetailsForm({ buttonText = 'Submit', onChange = () => { },
                         }
                     })
                 }}>Close</button>}
-                <button onClick={() => { onDetailsSubmit() }}>{buttonText}</button>
+                <button className="button__small" onClick={() => { onDetailsSubmit() }}>{buttonText}</button>
             </div>
         </div>
     )

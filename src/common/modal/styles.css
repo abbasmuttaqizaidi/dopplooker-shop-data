@@ -12,11 +12,15 @@
     /* Ensure modal is on top of other elements */
 }
 
+.modal__title b{
+    font-size: 1.5rem;
+}
+
 .modal__body {
     background-color: white;
-    padding: 10px;
+    padding: 1rem;
     border-radius: 5px;
-    min-width: 300px
+    min-width: 400px
 }
 
 .modal__header {
@@ -28,4 +32,5 @@
 .modal__close {
     cursor: pointer;
     padding: 0.2rem;
+    font-weight: bold;
 }

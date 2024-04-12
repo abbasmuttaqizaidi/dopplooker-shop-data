@@ -4,7 +4,6 @@ import { useContextLayer } from '../context';
 import { useEffect } from 'react';
 import { extractCurrentDate } from '../helper';
 import { _actions } from '../context/actions';
-import refresh from '../../assets/icons/refresh.svg';
 
 export const Header = () => {
 
@@ -29,7 +28,7 @@ export const Header = () => {
                 totalAmountToday
             }
         })
-    }, [])
+    }, [states?.customerData])
 
     return (
         <div className="header__container">
@@ -48,9 +47,6 @@ export const Header = () => {
                         <p className='purchase__info--value'>${states?.totalAmountToday || 0}</p>
                     </div>
                 </div>
-            </div>
-            <div className="header__footer">
-                <div>Refresh</div>
             </div>
         </div>
     )
